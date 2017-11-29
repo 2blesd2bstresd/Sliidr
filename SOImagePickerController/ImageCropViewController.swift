@@ -11,13 +11,20 @@ import Photos
 
 
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet private var editImageView: UIImageView!
+    @IBOutlet private var cropView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.cropView.layer.borderWidth = 1.0
+        self.cropView.layer.borderColor = #colorLiteral(red: 0.5254901961, green: 0.7215686275, blue: 0.831372549, alpha: 1)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
     }
     
     //Action for capture image from Camera
@@ -36,28 +43,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    //Action for fetch image from Gallery
-    @IBAction func actionClickOnGallery(_ sender: AnyObject) {
+    // MARK: - UIImagePickerControllerDelegate
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.editImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        self.dismiss(animated: true)
+    }
+    
+    // MARK: - Actions
+    @IBAction func selectPhoto(_ sender: AnyObject) {
         let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = true;
+        imagePicker.allowsEditing = false
         imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
         imagePicker.delegate = self
         
-        present(imagePicker, animated: true, completion: nil)
+        self.present(imagePicker, animated: true)
     }
-    
     
     // MARK: - UIImagePickerControllerDelegate Methods
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        imgView.image = info[UIImagePickerControllerEditedImage] as? UIImage
-        print("UI IMAGE")
-        print(imgView)
-        for i in splitImage(image2D: imgView.image!) {
-            self.saveImageToCameraRoll(i)
-        }
-        
-        dismiss(animated: true, completion: nil)
-    }
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+//        self.editImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
+////        print("UI IMAGE")
+////        print(imgView)
+////        for i in splitImage(image2D: imgView.image!) {
+////            self.saveImageToCameraRoll(i)
+////        }
+//
+//        dismiss(animated: true, completion: nil)
+//    }
     
     func splitImage(image2D: UIImage) -> [UIImage] {
         let imgWidth = image2D.size.width / 2

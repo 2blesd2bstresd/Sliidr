@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F9E58B671D7ED4130062F186 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E58B661D7ED4130062F186 /* AppDelegate.swift */; };
-		F9E58B691D7ED4130062F186 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E58B681D7ED4130062F186 /* ViewController.swift */; };
+		F9E58B691D7ED4130062F186 /* ImageCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E58B681D7ED4130062F186 /* ImageCropViewController.swift */; };
 		F9E58B6C1D7ED4130062F186 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9E58B6A1D7ED4130062F186 /* Main.storyboard */; };
 		F9E58B6E1D7ED4130062F186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9E58B6D1D7ED4130062F186 /* Assets.xcassets */; };
 		F9E58B711D7ED4130062F186 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9E58B6F1D7ED4130062F186 /* LaunchScreen.storyboard */; };
@@ -18,7 +18,7 @@
 		506ADE5C1FCBF178004C2CB2 /* SOImagePickerController-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SOImagePickerController-Bridging-Header.h"; sourceTree = "<group>"; };
 		F9E58B631D7ED4130062F186 /* SOImagePickerController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOImagePickerController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9E58B661D7ED4130062F186 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F9E58B681D7ED4130062F186 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F9E58B681D7ED4130062F186 /* ImageCropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropViewController.swift; sourceTree = "<group>"; };
 		F9E58B6B1D7ED4130062F186 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F9E58B6D1D7ED4130062F186 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9E58B701D7ED4130062F186 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				F9E58B661D7ED4130062F186 /* AppDelegate.swift */,
-				F9E58B681D7ED4130062F186 /* ViewController.swift */,
+				F9E58B681D7ED4130062F186 /* ImageCropViewController.swift */,
 				F9E58B6A1D7ED4130062F186 /* Main.storyboard */,
 				F9E58B6D1D7ED4130062F186 /* Assets.xcassets */,
 				F9E58B6F1D7ED4130062F186 /* LaunchScreen.storyboard */,
@@ -139,7 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9E58B691D7ED4130062F186 /* ViewController.swift in Sources */,
+				F9E58B691D7ED4130062F186 /* ImageCropViewController.swift in Sources */,
 				F9E58B671D7ED4130062F186 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
