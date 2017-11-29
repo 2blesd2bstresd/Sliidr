@@ -13,8 +13,21 @@ import Photos
 
 class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet private var editParentView: UIView!
     @IBOutlet private var editImageView: UIImageView!
     @IBOutlet private var cropView: UIView!
+    
+    @IBOutlet private var editImageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet private var cropViewHeightConstraint: NSLayoutConstraint!
+    
+    private var editImage:UIImage?{
+        get{
+            return self.editImageView.image
+        }
+        set{
+            self.editImageView.image = newValue
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +38,45 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.editImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
+        if let realSize = self.editImage?.size{
+            let aspect = realSize.height / realSize.width
+            
+            let height = self.editParentView.bounds.size.height
+            
+            let width = height / aspect
+            
+            print(realSize)
+            
+            self.editImageViewWidthConstraint?.constant = width
+        }
+        
+        self.dismiss(animated: true)
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func selectPhoto(_ sender: AnyObject) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.delegate = self
+        
+        self.present(imagePicker, animated: true)
+    }
+    
+    @IBAction func cropVertical(_ sender:UIButton){
+        self.cropViewHeightConstraint.constant = self.editParentView.bounds.size.height
+    }
+    
+    @IBAction func cropSquare(_ sender:UIButton){
+        self.cropViewHeightConstraint.constant = self.editParentView.bounds.size.width / 2.0
     }
     
     //Action for capture image from Camera
@@ -41,23 +93,6 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-    }
-    
-    // MARK: - UIImagePickerControllerDelegate
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        self.editImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        self.dismiss(animated: true)
-    }
-    
-    // MARK: - Actions
-    @IBAction func selectPhoto(_ sender: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        imagePicker.delegate = self
-        
-        self.present(imagePicker, animated: true)
     }
     
     // MARK: - UIImagePickerControllerDelegate Methods
