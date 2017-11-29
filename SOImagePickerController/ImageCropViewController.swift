@@ -60,15 +60,25 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
         self.dismiss(animated: true)
     }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true)
+    }
+    
     // MARK: - Actions
     
-    @IBAction func selectPhoto(_ sender: AnyObject) {
+    @IBAction private func selectPhoto(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = false
         imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
         imagePicker.delegate = self
         
         self.present(imagePicker, animated: true)
+    }
+    
+    @IBAction private func flipPhoto(_ sender:UIButton){
+        if let realEditImage = self.editImage, let realCGImage = realEditImage.cgImage{
+            self.editImage = self.editImage?.flipHorizontal()
+        }
     }
     
     @IBAction func cropVertical(_ sender:UIButton){
@@ -144,22 +154,4 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
             }
         })
     }
-    
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-//    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-//        imgView.image = image
-//        dismissViewControllerAnimated(true, completion: nil)
-//    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
-

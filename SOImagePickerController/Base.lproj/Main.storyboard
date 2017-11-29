@@ -62,6 +62,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4k-ho-0nA" userLabel="FlipButton">
                                         <rect key="frame" x="104.5" y="0.0" width="76" height="77"/>
                                         <state key="normal" backgroundImage="FlipButton"/>
+                                        <connections>
+                                            <action selector="flipPhoto:" destination="yqh-rB-Ca3" eventType="touchUpInside" id="KIr-zy-Ik9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

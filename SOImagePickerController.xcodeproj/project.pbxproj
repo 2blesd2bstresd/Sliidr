@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CDEED221FCF4D3500076615 /* UIImage+Flip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDEED211FCF4D3500076615 /* UIImage+Flip.swift */; };
 		F9E58B671D7ED4130062F186 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E58B661D7ED4130062F186 /* AppDelegate.swift */; };
 		F9E58B691D7ED4130062F186 /* ImageCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E58B681D7ED4130062F186 /* ImageCropViewController.swift */; };
 		F9E58B6C1D7ED4130062F186 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9E58B6A1D7ED4130062F186 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		506ADE5C1FCBF178004C2CB2 /* SOImagePickerController-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SOImagePickerController-Bridging-Header.h"; sourceTree = "<group>"; };
+		9CDEED211FCF4D3500076615 /* UIImage+Flip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Flip.swift"; sourceTree = "<group>"; };
 		F9E58B631D7ED4130062F186 /* SOImagePickerController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOImagePickerController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9E58B661D7ED4130062F186 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9E58B681D7ED4130062F186 /* ImageCropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +38,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9CDEED201FCF4D2000076615 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9CDEED211FCF4D3500076615 /* UIImage+Flip.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		F9E58B5A1D7ED4130062F186 = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +67,7 @@
 			children = (
 				F9E58B661D7ED4130062F186 /* AppDelegate.swift */,
 				F9E58B681D7ED4130062F186 /* ImageCropViewController.swift */,
+				9CDEED201FCF4D2000076615 /* Extension */,
 				F9E58B6A1D7ED4130062F186 /* Main.storyboard */,
 				F9E58B6D1D7ED4130062F186 /* Assets.xcassets */,
 				F9E58B6F1D7ED4130062F186 /* LaunchScreen.storyboard */,
@@ -139,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CDEED221FCF4D3500076615 /* UIImage+Flip.swift in Sources */,
 				F9E58B691D7ED4130062F186 /* ImageCropViewController.swift in Sources */,
 				F9E58B671D7ED4130062F186 /* AppDelegate.swift in Sources */,
 			);
