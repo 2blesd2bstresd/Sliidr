@@ -9,9 +9,12 @@
 import UIKit
 import Photos
 
+enum ImageCropSegueIdentifier : String{
+    case showPreview
+}
 
 
-class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CropPreviewViewControllerDelegate {
 
     @IBOutlet private var editParentView: UIView!
     @IBOutlet private var editImageView: UIImageView!
@@ -19,6 +22,8 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
     
     @IBOutlet private var editImageViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet private var cropViewHeightConstraint: NSLayoutConstraint!
+    
+    private var cropSquare:Bool = false
     
     private var editImage:UIImage?{
         get{
@@ -29,6 +34,10 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
         }
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,8 +45,22 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
         self.cropView.layer.borderColor = #colorLiteral(red: 0.5254901961, green: 0.7215686275, blue: 0.831372549, alpha: 1)
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let segueIdentifierString = segue.identifier, let segueIdentifier = ImageCropSegueIdentifier(rawValue:segueIdentifierString) else{
+            super.prepare(for: segue, sender: sender)
+            return
+        }
+        
+        switch segueIdentifier {
+        case .showPreview:
+            let cropPreviewViewController = segue.destination as! CropPreviewViewController
+            cropPreviewViewController.delegate = self
+            
+            let images = self.editImage?.cutoutSlides(cropSquare: self.cropSquare)
+            
+            cropPreviewViewController.image1 = images?.left
+            cropPreviewViewController.image2 = images?.right
+        }
     }
     
     // MARK: - UIImagePickerControllerDelegate
@@ -64,6 +87,24 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
         self.dismiss(animated: true)
     }
     
+    // MARK: - CropPreviewViewControllerDelegate
+    
+    func cropPreviewViewControllerCancel(_ cropPreviewViewController: CropPreviewViewController) {
+        self.dismiss(animated: true)
+    }
+    
+    func cropPreviewViewControllerComplete(_ cropPreviewViewController: CropPreviewViewController) {
+        self.editImage = nil
+        self.dismiss(animated: true) {
+            let alert = UIAlertController(title: "Success!", message: "Your slides have been saved to your photos.", preferredStyle:.alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            
+            alert.addAction(okAction)
+            
+            self.present(alert, animated: true)
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction private func selectPhoto(_ sender: UIButton) {
@@ -76,17 +117,27 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction private func flipPhoto(_ sender:UIButton){
-        if let realEditImage = self.editImage, let realCGImage = realEditImage.cgImage{
-            self.editImage = self.editImage?.flipHorizontal()
-        }
+        self.editImage = self.editImage?.flipHorizontal()
     }
     
-    @IBAction func cropVertical(_ sender:UIButton){
+    @IBAction private func cropVertical(_ sender:UIButton){
+        self.cropSquare = false
+        
         self.cropViewHeightConstraint.constant = self.editParentView.bounds.size.height
+        self.animateLayout()
     }
     
-    @IBAction func cropSquare(_ sender:UIButton){
+    @IBAction private func cropSquare(_ sender:UIButton){
+        self.cropSquare = true
+        
         self.cropViewHeightConstraint.constant = self.editParentView.bounds.size.width / 2.0
+        self.animateLayout()
+    }
+    
+    @IBAction private func previewCrop(_ sender:UIButton){
+        if self.editImage != nil{
+            self.performSegue(withIdentifier: ImageCropSegueIdentifier.showPreview.rawValue, sender: sender)
+        }
     }
     
     //Action for capture image from Camera
@@ -105,53 +156,26 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
         }
     }
     
-    // MARK: - UIImagePickerControllerDelegate Methods
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//        self.editImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
-////        print("UI IMAGE")
-////        print(imgView)
-////        for i in splitImage(image2D: imgView.image!) {
-////            self.saveImageToCameraRoll(i)
-////        }
-//
-//        dismiss(animated: true, completion: nil)
+//    func saveImageToCameraRoll(_ image: UIImage) {
+//        PHPhotoLibrary.shared().performChanges({
+//            PHAssetChangeRequest.creationRequestForAsset(from: image)
+//        }, completionHandler: { success, error in
+//            if success {
+//                // Saved successfully!
+//            }
+//            else if let error = error {
+//                print("Save failed with error " + String(describing: error))
+//            }
+//            else {
+//            }
+//        })
 //    }
     
-    func splitImage(image2D: UIImage) -> [UIImage] {
-        let imgWidth = image2D.size.width / 2
-        let imgHeight = image2D.size.height
-        var imgImages:[UIImage] = []
-        
-        let leftHigh = CGRect(x: 0, y: 0, width: imgWidth, height: imgHeight)
-        let rightHigh = CGRect(x: imgWidth, y: 0, width: imgHeight, height: imgHeight)
-//        let leftLow = CGRect(x: 0, y: imgHeight, width: imgWidth, height: imgHeight)
-//        let rightLow = CGRect(x: imgWidth, y: imgHeight, width: imgWidth, height: imgHeight)
-        
-        let leftQH = image2D.cgImage?.cropping(to:leftHigh)
-        let rightHQ = image2D.cgImage?.cropping(to:rightHigh)
-//        let leftQL = image2D.cgImage?.cropping(to:leftLow)
-//        let rightQL = image2D.cgImage?.cropping(to:rightLow)
-        
-        imgImages.append(UIImage(cgImage: leftQH!))
-        imgImages.append(UIImage(cgImage: rightHQ!))
-//        imgImages.append(UIImage(cgImage: leftQL!))
-//        imgImages.append(UIImage(cgImage: rightQL!))
-        
-        return imgImages
-    }
+    // MARK: - Private
     
-    func saveImageToCameraRoll(_ image: UIImage) {
-        PHPhotoLibrary.shared().performChanges({
-            PHAssetChangeRequest.creationRequestForAsset(from: image)
-        }, completionHandler: { success, error in
-            if success {
-                // Saved successfully!
-            }
-            else if let error = error {
-                print("Save failed with error " + String(describing: error))
-            }
-            else {
-            }
-        })
+    private func animateLayout(){
+        UIView.animate(withDuration: 0.1) {
+            self.view.layoutIfNeeded()
+        }
     }
 }

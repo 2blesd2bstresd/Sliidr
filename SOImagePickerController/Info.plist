@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Take a picture to crop.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Sliidr would like to access your photos so you can create and save new slides.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Choose a picture to crop.</string>
 	<key>UILaunchStoryboardName</key>
