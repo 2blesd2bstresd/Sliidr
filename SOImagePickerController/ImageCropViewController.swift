@@ -14,14 +14,18 @@ enum ImageCropSegueIdentifier : String{
 }
 
 
-class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CropPreviewViewControllerDelegate {
+class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, CropPreviewViewControllerDelegate {
 
     @IBOutlet private var editParentView: UIView!
+    @IBOutlet private var editScrollView: UIScrollView!
     @IBOutlet private var editImageView: UIImageView!
     @IBOutlet private var cropView: UIView!
     
     @IBOutlet private var editImageViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet private var cropViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet private var cropVerticalButton: UIButton!
+    @IBOutlet private var cropSquareButton: UIButton!
     
     private var cropSquare:Bool = false
     
@@ -56,35 +60,49 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
             let cropPreviewViewController = segue.destination as! CropPreviewViewController
             cropPreviewViewController.delegate = self
             
-            let images = self.editImage?.cutoutSlides(cropSquare: self.cropSquare)
+            let sizeMultiplier = (self.editImage?.size.width ?? self.editScrollView.contentSize.width) / self.editScrollView.contentSize.width
+            let scaledOffset = CGPoint(x:self.editScrollView.contentOffset.x * sizeMultiplier, y:self.editScrollView.contentOffset.y * sizeMultiplier)
+            
+            let images = self.editImage?.cutoutSlides(cropSquare: self.cropSquare, scale: self.editScrollView.zoomScale, offset: scaledOffset)
             
             cropPreviewViewController.image1 = images?.left
             cropPreviewViewController.image2 = images?.right
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.updateCropView()
+        self.animateLayout()
+    }
+    
     // MARK: - UIImagePickerControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.editImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+    
+        self.editScrollView.zoomScale = 1.0
         
-        if let realSize = self.editImage?.size{
-            let aspect = realSize.height / realSize.width
-            
-            let height = self.editParentView.bounds.size.height
-            
-            let width = height / aspect
-            
-            print(realSize)
-            
-            self.editImageViewWidthConstraint?.constant = width
-        }
+        self.updatedEditImageWidthConstraint()
+        self.updateCropView()
+        self.view.layoutIfNeeded()
         
         self.dismiss(animated: true)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true)
+    }
+    
+    // MARK: - UIScrollViewDelegate
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.editImageView
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset)
     }
     
     // MARK: - CropPreviewViewControllerDelegate
@@ -120,17 +138,31 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
         self.editImage = self.editImage?.flipHorizontal()
     }
     
+    @IBAction private func rotatePhoto(_ sender:UIButton){
+        self.editImage = self.editImage?.rotate()
+        
+        self.updatedEditImageWidthConstraint()
+        self.updateCropView()
+        self.animateLayout()
+    }
+    
     @IBAction private func cropVertical(_ sender:UIButton){
         self.cropSquare = false
         
-        self.cropViewHeightConstraint.constant = self.editParentView.bounds.size.height
+        self.cropVerticalButton.isSelected = true
+        self.cropSquareButton.isSelected = false
+        
+        self.updateCropView()
         self.animateLayout()
     }
     
     @IBAction private func cropSquare(_ sender:UIButton){
         self.cropSquare = true
         
-        self.cropViewHeightConstraint.constant = self.editParentView.bounds.size.width / 2.0
+        self.cropVerticalButton.isSelected = false
+        self.cropSquareButton.isSelected = true
+        
+        self.updateCropView()
         self.animateLayout()
     }
     
@@ -176,6 +208,27 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
     private func animateLayout(){
         UIView.animate(withDuration: 0.1) {
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func updateCropView(){
+        if self.cropSquare{
+            self.cropViewHeightConstraint.constant = self.editParentView.bounds.size.width / 2.0
+        }
+        else{
+            self.cropViewHeightConstraint.constant = self.editParentView.bounds.size.height
+        }
+    }
+    
+    private func updatedEditImageWidthConstraint(){
+        if let realSize = self.editImage?.size{
+            let aspect = realSize.height / realSize.width
+            
+            let height = self.editParentView.bounds.size.height
+            
+            let width = height / aspect
+            
+            self.editImageViewWidthConstraint?.constant = width
         }
     }
 }

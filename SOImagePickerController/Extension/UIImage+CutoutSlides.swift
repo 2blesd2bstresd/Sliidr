@@ -9,31 +9,35 @@
 import UIKit
 
 extension UIImage{
-    func cutoutSlides(cropSquare:Bool) -> (left:UIImage, right:UIImage)?{
+    func cutoutSlides(cropSquare:Bool, scale:CGFloat = 1.0, offset:CGPoint = CGPoint.zero) -> (left:UIImage, right:UIImage)?{
         let leftBounds:CGRect
         
-        let halfedSize = CGSize(width: self.size.width / 2.0, height: self.size.height)
+        let zoomReciprocal = 1.0 / scale
+        
+        let cropRect = CGRect(origin:offset, size:CGSize(width:self.size.width * zoomReciprocal, height:self.size.height * zoomReciprocal))
+        
+        let halfedSize = CGSize(width: cropRect.size.width / 2.0, height: cropRect.size.height)
         
         if cropSquare{
-            let height = self.size.width / 2.0
-            let difference = self.size.height - height
+            let height = cropRect.size.width / 2.0
+            let difference = cropRect.size.height - height
             
-            leftBounds = CGRect(origin: CGPoint(x:0, y:difference / 2.0), size:halfedSize)
+            leftBounds = CGRect(origin: CGPoint(x:cropRect.origin.x, y:cropRect.origin.y + difference / 2.0), size:halfedSize)
         }
         else{
-            leftBounds = CGRect(origin: CGPoint.zero, size: halfedSize)
+            leftBounds = CGRect(origin: cropRect.origin, size: halfedSize)
         }
         
         let rightBounds:CGRect
         
         if cropSquare{
-            let height = self.size.width / 2.0
-            let difference = self.size.height - height
+            let height = cropRect.size.width / 2.0
+            let difference = cropRect.size.height - height
             
-            rightBounds = CGRect(origin: CGPoint(x:self.size.width / 2.0, y:difference / 2.0), size:halfedSize)
+            rightBounds = CGRect(origin: CGPoint(x:cropRect.midX, y:cropRect.origin.y + difference / 2.0), size:halfedSize)
         }
         else{
-            rightBounds = CGRect(origin: CGPoint(x:self.size.width / 2.0, y:0.0), size:halfedSize)
+            rightBounds = CGRect(origin: CGPoint(x:cropRect.midX, y:cropRect.origin.y), size:halfedSize)
         }
         
         if let realLeftImage = self.cutout(rect: leftBounds), let realRightImage = self.cutout(rect: rightBounds){
