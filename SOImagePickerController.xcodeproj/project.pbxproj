@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C0A812A1FD0999000BE4866 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0A81291FD0999000BE4866 /* HomeViewController.swift */; };
+		9C0A812C1FD09B8400BE4866 /* UIViewController+SelectPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0A812B1FD09B8400BE4866 /* UIViewController+SelectPhoto.swift */; };
 		9CDEED221FCF4D3500076615 /* UIImage+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDEED211FCF4D3500076615 /* UIImage+Transform.swift */; };
 		9CDEED241FCF647A00076615 /* UIImage+CutoutSlides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDEED231FCF647A00076615 /* UIImage+CutoutSlides.swift */; };
 		9CDEED261FCF658700076615 /* CropPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDEED251FCF658700076615 /* CropPreviewViewController.swift */; };
@@ -19,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		506ADE5C1FCBF178004C2CB2 /* SOImagePickerController-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SOImagePickerController-Bridging-Header.h"; sourceTree = "<group>"; };
+		9C0A81291FD0999000BE4866 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9C0A812B1FD09B8400BE4866 /* UIViewController+SelectPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SelectPhoto.swift"; sourceTree = "<group>"; };
 		9CDEED211FCF4D3500076615 /* UIImage+Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Transform.swift"; sourceTree = "<group>"; };
 		9CDEED231FCF647A00076615 /* UIImage+CutoutSlides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CutoutSlides.swift"; sourceTree = "<group>"; };
 		9CDEED251FCF658700076615 /* CropPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPreviewViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +49,7 @@
 		9CDEED201FCF4D2000076615 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9C0A812B1FD09B8400BE4866 /* UIViewController+SelectPhoto.swift */,
 				9CDEED211FCF4D3500076615 /* UIImage+Transform.swift */,
 				9CDEED231FCF647A00076615 /* UIImage+CutoutSlides.swift */,
 			);
@@ -71,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				F9E58B661D7ED4130062F186 /* AppDelegate.swift */,
+				9C0A81291FD0999000BE4866 /* HomeViewController.swift */,
 				F9E58B681D7ED4130062F186 /* ImageCropViewController.swift */,
 				9CDEED251FCF658700076615 /* CropPreviewViewController.swift */,
 				9CDEED201FCF4D2000076615 /* Extension */,
@@ -161,6 +167,8 @@
 				F9E58B691D7ED4130062F186 /* ImageCropViewController.swift in Sources */,
 				F9E58B671D7ED4130062F186 /* AppDelegate.swift in Sources */,
 				9CDEED261FCF658700076615 /* CropPreviewViewController.swift in Sources */,
+				9C0A812A1FD0999000BE4866 /* HomeViewController.swift in Sources */,
+				9C0A812C1FD09B8400BE4866 /* UIViewController+SelectPhoto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
