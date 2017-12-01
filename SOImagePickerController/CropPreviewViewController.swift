@@ -58,11 +58,11 @@ class CropPreviewViewController: UIViewController, UIBarPositioningDelegate {
     
     // MARK: - Actions
     
-    @IBAction private func cancel(_ sender:UIBarButtonItem){
+    @IBAction private func cancel(_ sender:UIButton){
         self.delegate?.cropPreviewViewControllerCancel(self)
     }
     
-    @IBAction private func save(_ sender:UIBarButtonItem){
+    @IBAction private func save(_ sender:UIButton){
         UIImageWriteToSavedPhotosAlbum(self.image1, nil, nil, nil)
         UIImageWriteToSavedPhotosAlbum(self.image2, nil, nil, nil)
         
