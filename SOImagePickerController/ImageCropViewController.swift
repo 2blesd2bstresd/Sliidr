@@ -98,7 +98,7 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
     // MARK: - UIImagePickerControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        self.editImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        self.editImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)?.orientedUp()
         self.updateEditImageViewConstraints()
         
         self.updateCropView()

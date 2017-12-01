@@ -27,7 +27,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         switch segueIdentifier {
         case .cropPhoto:
             let imageCropViewController = segue.destination as! ImageCropViewController
-            imageCropViewController.editImage = sender as? UIImage
+            imageCropViewController.editImage = (sender as? UIImage)?.orientedUp()
         }
     }
 

@@ -254,8 +254,12 @@
                             <constraint firstItem="k56-0U-rgx" firstAttribute="top" secondItem="n3b-cr-8VG" secondAttribute="top" id="PhC-Zj-hWb"/>
                             <constraint firstItem="nE1-j1-dnb" firstAttribute="top" secondItem="cD4-bs-ok0" secondAttribute="bottom" id="QCT-50-XcX"/>
                             <constraint firstItem="cD4-bs-ok0" firstAttribute="top" secondItem="lUx-ts-Mqe" secondAttribute="bottom" id="X6K-Du-PPg"/>
-                            <constraint firstItem="cGV-fY-nOm" firstAttribute="trailing" secondItem="lUx-ts-Mqe" secondAttribute="trailing" constant="10" id="e0J-UO-ckQ"/>
-                            <constraint firstItem="lUx-ts-Mqe" firstAttribute="leading" secondItem="cGV-fY-nOm" secondAttribute="leading" constant="10" id="ffZ-Ee-RCk"/>
+                            <constraint firstItem="cGV-fY-nOm" firstAttribute="trailing" secondItem="lUx-ts-Mqe" secondAttribute="trailing" constant="50" id="e0J-UO-ckQ">
+                                <variation key="widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="lUx-ts-Mqe" firstAttribute="leading" secondItem="cGV-fY-nOm" secondAttribute="leading" constant="50" id="ffZ-Ee-RCk">
+                                <variation key="widthClass=compact" constant="10"/>
+                            </constraint>
                             <constraint firstItem="Bpd-Y7-8Pd" firstAttribute="centerX" secondItem="cGV-fY-nOm" secondAttribute="centerX" id="h3s-9Y-khU"/>
                             <constraint firstItem="Bpd-Y7-8Pd" firstAttribute="top" secondItem="k56-0U-rgx" secondAttribute="bottom" id="l4J-ew-eSI"/>
                             <constraint firstItem="cD4-bs-ok0" firstAttribute="centerX" secondItem="n3b-cr-8VG" secondAttribute="centerX" id="qs8-27-iHl"/>
