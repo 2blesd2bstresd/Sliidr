@@ -31,7 +31,19 @@ extension UIImage{
         let cutoutCGImage = realCGImage.cropping(to: rect)
         
         if let realCutoutCGImage = cutoutCGImage{
-            return UIImage(cgImage:realCutoutCGImage)
+            let cutoutImage = UIImage(cgImage:realCutoutCGImage)
+        
+            UIGraphicsBeginImageContextWithOptions(rect.size, true, self.scale)
+        
+            let origin = CGPoint(x:-CGFloat.minimum(0.0, rect.origin.x), y:-CGFloat.minimum(0.0, rect.origin.y))
+            
+            cutoutImage.draw(in: CGRect(origin:origin, size:cutoutImage.size))
+            
+            let croppedImage = UIGraphicsGetImageFromCurrentImageContext()
+            
+            UIGraphicsEndImageContext()
+            
+            return croppedImage
         }
         
         return nil
