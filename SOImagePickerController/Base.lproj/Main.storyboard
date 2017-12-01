@@ -137,10 +137,11 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="WJl-1d-YMC">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="319"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="355" placeholderIntrinsicHeight="144" translatesAutoresizingMaskIntoConstraints="NO" id="6l0-gL-YFj">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="355" placeholderIntrinsicHeight="144" translatesAutoresizingMaskIntoConstraints="NO" id="6l0-gL-YFj">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="144"/>
                                             </imageView>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="6l0-gL-YFj" secondAttribute="bottom" id="8kw-oG-8DU"/>
                                             <constraint firstAttribute="trailing" secondItem="6l0-gL-YFj" secondAttribute="trailing" id="HDo-jD-AN1"/>

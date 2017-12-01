@@ -99,6 +99,7 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.editImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)?.orientedUp()
+        self.editScrollView.zoomScale = 1.0
         self.updateEditImageViewConstraints()
         
         self.updateCropView()
@@ -224,15 +225,30 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
         }
         
         let aspect = editImage.size.height / editImage.size.width
+        let scaledWidth = self.editParentView.bounds.size.height / aspect
         let scaledHeight = self.editParentView.bounds.size.width * aspect
         
         let constantConstraint:NSLayoutConstraint
         
         if scaledHeight > self.editParentView.bounds.size.height{
-            constantConstraint = NSLayoutConstraint(item: self.editImageView, attribute: .width, relatedBy: .equal, toItem: self.editParentView, attribute: .width, multiplier: 1.0, constant: 0.0)
+            constantConstraint = NSLayoutConstraint(item: self.editImageView, attribute: .height, relatedBy: .equal, toItem: self.editParentView, attribute: .height, multiplier: 1.0, constant: 0.0)
+            
+            let widthDifference = (self.editParentView.bounds.size.width - scaledWidth) / 2.0
+            
+            self.editScrollView.contentInset = UIEdgeInsets(top: 0.0,
+                                                            left: widthDifference,
+                                                            bottom: 0.0,
+                                                            right: widthDifference)
         }
         else{
-            constantConstraint = NSLayoutConstraint(item: self.editImageView, attribute: .height, relatedBy: .equal, toItem: self.editParentView, attribute: .height, multiplier: 1.0, constant: 0.0)
+            constantConstraint = NSLayoutConstraint(item: self.editImageView, attribute: .width, relatedBy: .equal, toItem: self.editParentView, attribute: .width, multiplier: 1.0, constant: 0.0)
+            
+            let heightDifference = (self.editParentView.bounds.size.height - scaledHeight) / 2.0
+          
+            self.editScrollView.contentInset = UIEdgeInsets(top: heightDifference,
+                                                            left: 0.0,
+                                                            bottom: heightDifference,
+                                                            right: 0.0)
         }
         
         self.editParentView.addConstraint(constantConstraint)
