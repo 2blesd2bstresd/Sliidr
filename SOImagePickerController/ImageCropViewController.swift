@@ -65,10 +65,23 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
             let cropPreviewViewController = segue.destination as! CropPreviewViewController
             cropPreviewViewController.delegate = self
             
-            let sizeMultiplier = (self.editImage?.size.width ?? self.editScrollView.contentSize.width) / self.editScrollView.contentSize.width
-            let scaledOffset = CGPoint(x:self.editScrollView.contentOffset.x * sizeMultiplier, y:self.editScrollView.contentOffset.y * sizeMultiplier)
+            let offset = CGPoint(x:self.cropView.frame.origin.x + self.editScrollView.contentOffset.x,
+                                 y:self.cropView.frame.origin.y + self.editScrollView.contentOffset.y)
             
-            let images = self.editImage?.cutoutSlides(cropSquare: self.cropSquare, scale: self.editScrollView.zoomScale, offset: scaledOffset)
+            let cropRect = CGRect(origin: offset, size: self.cropView.bounds.size)
+            
+            let scaledImageSize = CGSize(width: self.editImageView.bounds.size.width * self.editScrollView.zoomScale,
+                                         height: self.editImageView.bounds.size.height * self.editScrollView.zoomScale)
+            
+            
+            let widthMultiplier = (self.editImage?.size.width ?? scaledImageSize.width) / scaledImageSize.width
+            let heightMultiplier = (self.editImage?.size.height ?? scaledImageSize.height) / scaledImageSize.height
+            
+            let scaledCropRect = CGRect(x: cropRect.origin.x * widthMultiplier, y: cropRect.origin.y * heightMultiplier, width: cropRect.size.width * widthMultiplier, height: cropRect.size.height * heightMultiplier)
+            
+            
+            print(scaledCropRect, self.editImage!.size)
+            let images = self.editImage?.cutoutSlides(cropRect:scaledCropRect)
             
             cropPreviewViewController.image1 = images?.left
             cropPreviewViewController.image2 = images?.right
