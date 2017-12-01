@@ -79,8 +79,6 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
             
             let scaledCropRect = CGRect(x: cropRect.origin.x * widthMultiplier, y: cropRect.origin.y * heightMultiplier, width: cropRect.size.width * widthMultiplier, height: cropRect.size.height * heightMultiplier)
             
-            
-            print(scaledCropRect, self.editImage!.size)
             let images = self.editImage?.cutoutSlides(cropRect:scaledCropRect)
             
             cropPreviewViewController.image1 = images?.left
