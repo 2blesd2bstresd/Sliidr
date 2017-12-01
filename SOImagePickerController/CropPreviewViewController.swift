@@ -34,6 +34,15 @@ class CropPreviewViewController: UIViewController, UIBarPositioningDelegate {
 
         self.imageView1.image = self.image1
         self.imageView2.image = self.image2
+        
+        let aspect = self.image1.size.height / self.image2.size.width
+        
+        let aspectConstraint1 = NSLayoutConstraint(item: self.imageView1, attribute: .height, relatedBy: .equal, toItem: self.imageView1, attribute: .width, multiplier: aspect, constant: 0.0)
+        self.imageView1.addConstraint(aspectConstraint1)
+       
+        let aspectConstraint2 = NSLayoutConstraint(item: self.imageView2, attribute: .height, relatedBy: .equal, toItem: self.imageView2, attribute: .width, multiplier: aspect, constant: 0.0)
+        
+        self.imageView2.addConstraint(aspectConstraint2)
     }
 
     override func didReceiveMemoryWarning() {
