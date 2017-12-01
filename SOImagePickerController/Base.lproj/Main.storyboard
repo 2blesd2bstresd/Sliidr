@@ -73,13 +73,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SliderLogo" translatesAutoresizingMaskIntoConstraints="NO" id="k56-0U-rgx">
-                                <rect key="frame" x="140" y="0.0" width="95" height="120"/>
+                                <rect key="frame" x="162.5" y="20" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="39f-7b-yhl"/>
+                                    <constraint firstAttribute="height" constant="50" id="XMP-cU-anI"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bpd-Y7-8Pd">
-                                <rect key="frame" x="45.5" y="120" width="285" height="77"/>
+                                <rect key="frame" x="45.5" y="70" width="285" height="77"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YV7-IU-IRr" userLabel="CameralRollButton">
                                         <rect key="frame" x="0.0" y="0.0" width="76" height="77"/>
@@ -132,10 +132,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lUx-ts-Mqe">
-                                <rect key="frame" x="10" y="217" width="355" height="233"/>
+                                <rect key="frame" x="10" y="167" width="355" height="319"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="WJl-1d-YMC">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="233"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="319"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="355" placeholderIntrinsicHeight="144" translatesAutoresizingMaskIntoConstraints="NO" id="6l0-gL-YFj">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="144"/>
@@ -152,11 +152,11 @@
                                         </connections>
                                     </scrollView>
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ioh-Fa-Rvg">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="51"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="94"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GGX-fn-rip">
-                                        <rect key="frame" x="0.0" y="51" width="355" height="131"/>
+                                        <rect key="frame" x="0.0" y="94" width="355" height="131"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuE-gk-Ym1">
                                                 <rect key="frame" x="177" y="0.0" width="1" height="131"/>
@@ -174,7 +174,7 @@
                                         </constraints>
                                     </view>
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1F-SN-Vy6">
-                                        <rect key="frame" x="0.0" y="182" width="355" height="51"/>
+                                        <rect key="frame" x="0.0" y="225" width="355" height="94"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -197,7 +197,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cD4-bs-ok0">
-                                <rect key="frame" x="67.5" y="450" width="240" height="120"/>
+                                <rect key="frame" x="67.5" y="486" width="240" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPv-hN-ImM" userLabel="CameralRollButton">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
@@ -235,9 +235,9 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nE1-j1-dnb">
-                                <rect key="frame" x="90" y="570" width="196" height="97"/>
+                                <rect key="frame" x="115.5" y="606" width="145" height="61"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="97" id="RQ9-ZA-Uvf"/>
+                                    <constraint firstAttribute="height" constant="61" id="pi6-WE-lMh"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="PreviewButton"/>
                                 <connections>
@@ -248,10 +248,10 @@
                         <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="k56-0U-rgx" firstAttribute="centerX" secondItem="cGV-fY-nOm" secondAttribute="centerX" id="067-D1-nrA"/>
+                            <constraint firstItem="k56-0U-rgx" firstAttribute="top" secondItem="cGV-fY-nOm" secondAttribute="top" id="3le-zi-ScI"/>
                             <constraint firstItem="nE1-j1-dnb" firstAttribute="bottom" secondItem="cGV-fY-nOm" secondAttribute="bottom" id="HY7-li-ksZ"/>
                             <constraint firstItem="nE1-j1-dnb" firstAttribute="centerX" secondItem="n3b-cr-8VG" secondAttribute="centerX" id="HqH-z4-2X2"/>
                             <constraint firstItem="lUx-ts-Mqe" firstAttribute="top" secondItem="Bpd-Y7-8Pd" secondAttribute="bottom" constant="20" id="In6-EN-OIg"/>
-                            <constraint firstItem="k56-0U-rgx" firstAttribute="top" secondItem="n3b-cr-8VG" secondAttribute="top" id="PhC-Zj-hWb"/>
                             <constraint firstItem="nE1-j1-dnb" firstAttribute="top" secondItem="cD4-bs-ok0" secondAttribute="bottom" id="QCT-50-XcX"/>
                             <constraint firstItem="cD4-bs-ok0" firstAttribute="top" secondItem="lUx-ts-Mqe" secondAttribute="bottom" id="X6K-Du-PPg"/>
                             <constraint firstItem="cGV-fY-nOm" firstAttribute="trailing" secondItem="lUx-ts-Mqe" secondAttribute="trailing" constant="50" id="e0J-UO-ckQ">
@@ -291,10 +291,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2s-NW-AfV">
-                                <rect key="frame" x="0.0" y="140" width="375" height="430"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="512"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR5-pJ-5eI">
-                                        <rect key="frame" x="0.0" y="151" width="375" height="128"/>
+                                        <rect key="frame" x="0.0" y="192" width="375" height="128"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="pvW-Ux-fk6">
                                                 <rect key="frame" x="0.0" y="0.0" width="750" height="128"/>
@@ -336,32 +336,23 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SliderLogo" translatesAutoresizingMaskIntoConstraints="NO" id="O8V-qX-3aO">
-                                <rect key="frame" x="140" y="20" width="95" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="Rf4-LL-dqQ"/>
-                                </constraints>
+                                <rect key="frame" x="162.5" y="50" width="50" height="50"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pS-Vr-hwk">
-                                <rect key="frame" x="0.0" y="570" width="375" height="97"/>
+                                <rect key="frame" x="0.0" y="612" width="375" height="55"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fvo-gH-MKT">
-                                        <rect key="frame" x="-12" y="0.0" width="398" height="97"/>
+                                        <rect key="frame" x="77" y="0.0" width="220" height="55"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NC-HL-qQX">
-                                                <rect key="frame" x="0.0" y="0.0" width="199" height="97"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="97" id="baB-YQ-1c8"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="55"/>
                                                 <state key="normal" backgroundImage="BackButton"/>
                                                 <connections>
                                                     <action selector="cancel:" destination="pT7-FB-Khv" eventType="touchUpInside" id="vjR-ek-c3k"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSL-CF-Vmh">
-                                                <rect key="frame" x="199" y="0.0" width="199" height="97"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="97" id="jPP-7m-CAJ"/>
-                                                </constraints>
+                                                <rect key="frame" x="110" y="0.0" width="110" height="55"/>
                                                 <state key="normal" backgroundImage="DoneButton"/>
                                                 <connections>
                                                     <action selector="save:" destination="pT7-FB-Khv" eventType="touchUpInside" id="2xi-VH-mFe"/>
@@ -388,7 +379,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1843137255" green="0.1843137255" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="O8V-qX-3aO" firstAttribute="top" secondItem="C2R-E2-hMd" secondAttribute="top" id="8Gj-F9-5jC"/>
+                            <constraint firstItem="O8V-qX-3aO" firstAttribute="top" secondItem="C2R-E2-hMd" secondAttribute="top" constant="30" id="8Gj-F9-5jC"/>
                             <constraint firstItem="O8V-qX-3aO" firstAttribute="centerX" secondItem="ff6-tS-Svb" secondAttribute="centerX" id="8h1-iY-W1U"/>
                             <constraint firstItem="5pS-Vr-hwk" firstAttribute="bottom" secondItem="C2R-E2-hMd" secondAttribute="bottom" id="AEZ-7y-guf"/>
                             <constraint firstItem="y2s-NW-AfV" firstAttribute="leading" secondItem="C2R-E2-hMd" secondAttribute="leading" id="XDM-OP-v6x"/>
@@ -411,15 +402,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BackButton" width="199" height="100"/>
+        <image name="BackButton" width="110" height="55"/>
         <image name="CameraRollButton" width="76" height="77"/>
-        <image name="DoneButton" width="199" height="100"/>
+        <image name="DoneButton" width="110" height="55"/>
         <image name="FlipButton" width="76" height="77"/>
         <image name="Logo" width="213" height="233"/>
-        <image name="PreviewButton" width="196" height="97"/>
+        <image name="PreviewButton" width="145" height="61"/>
         <image name="RotateButton" width="76" height="77"/>
         <image name="SelectPhotoButton" width="211" height="76"/>
-        <image name="SliderLogo" width="95" height="120"/>
+        <image name="SliderLogo" width="50" height="50"/>
         <image name="SquareButtonOff" width="150" height="150"/>
         <image name="SquareButtonOn" width="150" height="150"/>
         <image name="VerticalButtonOff" width="150" height="150"/>
