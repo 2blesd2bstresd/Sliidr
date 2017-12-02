@@ -152,7 +152,7 @@
                                             <outlet property="delegate" destination="yqh-rB-Ca3" id="xjr-M2-ipP"/>
                                         </connections>
                                     </scrollView>
-                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ioh-Fa-Rvg">
+                                    <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ioh-Fa-Rvg">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="94"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -174,7 +174,7 @@
                                             <constraint firstAttribute="bottom" secondItem="uuE-gk-Ym1" secondAttribute="bottom" id="f9g-vT-62U"/>
                                         </constraints>
                                     </view>
-                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1F-SN-Vy6">
+                                    <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1F-SN-Vy6">
                                         <rect key="frame" x="0.0" y="225" width="355" height="94"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
