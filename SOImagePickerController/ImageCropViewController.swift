@@ -198,7 +198,7 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
             self.cropViewHeightConstraint.constant = self.editParentView.bounds.size.width / 2.0
         }
         else{
-            self.cropViewHeightConstraint.constant = self.editParentView.bounds.size.width / (16.0 / 9.0)
+            self.cropViewHeightConstraint.constant = self.editParentView.bounds.size.width / (16.0 / 10.0)
         }
     }
     
