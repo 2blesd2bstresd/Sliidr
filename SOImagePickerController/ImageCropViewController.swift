@@ -109,6 +109,10 @@ class ImageCropViewController: UIViewController, UIImagePickerControllerDelegate
         self.dismiss(animated: true)
     }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true)
+    }
+    
     // MARK: - UIScrollViewDelegate
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {

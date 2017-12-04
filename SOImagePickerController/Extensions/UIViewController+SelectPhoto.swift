@@ -49,8 +49,4 @@ extension PhotoSelector where Self:UIViewController, Self:UIImagePickerControlle
         
         self.present(imagePicker, animated: true)
     }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true)
-    }
 }

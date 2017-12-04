@@ -43,4 +43,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.performSegue(withIdentifier: HomeSegueIdentifier.cropPhoto.rawValue, sender: info[UIImagePickerControllerOriginalImage])
         self.dismiss(animated: true)
     }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true)
+    }
 }
